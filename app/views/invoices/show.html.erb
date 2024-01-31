@@ -1,0 +1,13 @@
+<h1><%= @invoice.invoice_number %></h1>
+
+<p>User Account Number: <%= @invoice.user_id %></p>
+<p>Items:</p>
+<ul>
+  <% @invoice.items.each do |item| %>
+    <li>
+      <p><%= item.description %>, $<%= item.price %></p>
+    </li>
+  <% end %>
+</ul>
+
+<p>Invoice total: $<%= @invoice.total %></p>
