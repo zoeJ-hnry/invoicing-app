@@ -1,0 +1,42 @@
+<h1>New Invoice</h1>
+
+<%= form_for @invoice do |form| %>
+
+  <div>
+    <%= form.label :invoice_number %><br>
+    <%= form.text_field :invoice_number %>
+    <% @invoice.errors.full_messages_for(:invoice_number).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.label :total %><br>
+    <%= form.text_area :total %>
+  </div>
+
+  <div>
+    <%= form.label :user_id %><br>
+    <%= form.text_area :user_id %>
+    <% @invoice.errors.full_messages_for(:user_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  
+  
+  <%= form.fields_for :items do |item_subform|  %>
+    <h4>Items</h4>
+    <div>
+      <%= item_subform.label :description %><br>
+      <%= item_subform.text_field :description %><br>
+
+      <%= item_subform.label :price %><br>
+      <%= item_subform.text_field :price %>
+    </div>
+  <% end %>
+  
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
