@@ -1,9 +1,28 @@
-<h1>Invoices#index</h1>
-<ul>
-  <% @invoices.each do |invoice| %>
-    <li>
-      <%= link_to invoice.invoice_number, invoice %>
-    </li>
-  <% end %>
-</ul>
-<%= link_to "New Invoice", new_invoice_path %>
+<h1>Invoices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Invoice Number</th>
+      <th>Client</th>
+      <th>Total</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= link_to invoice.invoice_number, invoice %></td>
+        <td><%= invoice.client %></td>
+        <td><%= invoice.total %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="new-invoice-button" >
+  <%= link_to "New Invoice", new_invoice_path %>
+</div>

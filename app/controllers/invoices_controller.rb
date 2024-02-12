@@ -1,4 +1,11 @@
 class InvoicesController < ApplicationController
+      # before action to sert clients but restricted to specific actions (define the method in this file)
+
+      # add destory action
+
+      # add invoice status
+
+  
   def index
     @invoices = Invoice.all
   end
@@ -14,8 +21,10 @@ class InvoicesController < ApplicationController
 
   def create
 
-    @invoice = Invoice.new(invoice_params)
-    
+    params = invoice_params
+    params["total"] = Invoice.calculate_total(params[:items_attributes])
+    @invoice = Invoice.new(params)
+
     # where to get user_id from? doesnt make sense to pass from form 
     if @invoice.save
       redirect_to @invoice
@@ -28,7 +37,7 @@ class InvoicesController < ApplicationController
     def invoice_params
       params
         .require(:invoice)
-        .permit(:invoice_number, :total, :user_id,
+        .permit(:invoice_number, :user_id, :client,
           items_attributes: [:id, :description, :price])
     end
 

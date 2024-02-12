@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+ .container {
+
+    font-family: Arial, Helvetica, sans-serif;
+    table {
+        border-collapse: collapse;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: blueviolet;
+        color: white;
+        }
+    }
+
+    .new-invoice-button
+        a {
+            background-color: blueviolet;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+
+            :hover {
+                background-color: aliceblue;
+                color: black;
+            }
+        }
+ }

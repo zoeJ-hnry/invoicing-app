@@ -1,13 +1,30 @@
 <h1><%= @invoice.invoice_number %></h1>
 
-<p>User Account Number: <%= @invoice.user_id %></p>
-<p>Items:</p>
-<ul>
-  <% @invoice.items.each do |item| %>
-    <li>
-      <p><%= item.description %>, $<%= item.price %></p>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    </tr>
+    <p><strong>Client: </strong><%= @invoice.client %></p>
+    <tr>
+    </tr><p><strong>Items:</strong><tr>
+    <tr>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoice.items.each do |item| %>
+      <tr>
+        <td><%= item.description %></td>
+        <td><%= item.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+  <p><strong>Invoice total: </strong>$<%= @invoice.total %></p>
+</div>
 
-<p>Invoice total: $<%= @invoice.total %></p>
+<div class="new-invoice-button" >
+  <%= link_to "Invoices", invoices_path %>
+</div>
+
