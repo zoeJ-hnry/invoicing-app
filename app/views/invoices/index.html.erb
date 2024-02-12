@@ -1,2 +1,28 @@
-<h1>Invoices#index</h1>
-<p>Find me in app/views/invoices/index.html.erb</p>
+<h1>Invoices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Invoice Number</th>
+      <th>Client</th>
+      <th>Total</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= link_to invoice.invoice_number, invoice %></td>
+        <td><%= invoice.client %></td>
+        <td><%= invoice.total %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="new-invoice-button" >
+  <%= link_to "New Invoice", new_invoice_path %>
+</div>
